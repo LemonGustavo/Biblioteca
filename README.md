@@ -46,7 +46,6 @@ Controller < Service < Repository < Banco de dados
 - Docker Compose
 
 ## Esqueleto do Sistema
-## Esqueleto do Sistema
 
 ```text
 src/
