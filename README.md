@@ -46,7 +46,9 @@ Controller < Service < Repository < Banco de dados
 - Docker Compose
 
 ## Esqueleto do Sistema
-``
+## Esqueleto do Sistema
+
+```text
 src/
 ├── main.ts
 ├── app.module.ts
@@ -60,8 +62,8 @@ src/
 │   ├── dto/
 │   │   └── criar-livro.dto.ts
 │   └── repository/
-│       ├── livro.repository.ts (interface + token)
-│       └── livro.repository.typeorm.ts (implementação)
+│       ├── livro.repository.ts          (interface + token)
+│       └── livro.repository.typeorm.ts  (implementação)
 └── emprestimo/
     ├── emprestimo.module.ts
     ├── emprestimo.controller.ts
@@ -72,7 +74,7 @@ src/
     └── repository/
         ├── emprestimo.repository.ts
         └── emprestimo.repository.typeorm.ts
-``
+```
 
 
 
