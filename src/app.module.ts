@@ -10,7 +10,7 @@ import { Livro } from "./livro/livro";
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'Me0wscarada!',
+      password: 'sua_senha',
       database: 'biblioteca',
       entities: [Livro],
       autoLoadEntities: true,

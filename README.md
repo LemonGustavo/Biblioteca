@@ -75,5 +75,3 @@ src/
         └── emprestimo.repository.typeorm.ts
 ```
 
-
-
