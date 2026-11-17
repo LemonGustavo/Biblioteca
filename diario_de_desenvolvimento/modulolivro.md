@@ -264,7 +264,7 @@ export class LivroController {
 ```ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Livro } from './livro.entity';
+import { Livro } from './livro';
 import { LivroService } from './livro.service';
 import { LivroController } from './livro.controller';
 
