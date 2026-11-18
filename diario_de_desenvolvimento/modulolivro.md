@@ -1,5 +1,5 @@
 # Módulo Livro - 17/11/2027 (17:02)
-
+## Gustavo Vinícius Coinete Silva
 Foi feito o módulo Livro, seguindo o passo a passo e explicações abaixo:
 
 ## 1. Criar o projeto NestJS
@@ -264,7 +264,7 @@ export class LivroController {
 ```ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Livro } from './livro.entity';
+import { Livro } from './livro';
 import { LivroService } from './livro.service';
 import { LivroController } from './livro.controller';
 
