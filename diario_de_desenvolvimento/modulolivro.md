@@ -1,5 +1,5 @@
 # Módulo Livro - 17/11/2027 (17:02)
-
+## Gustavo Vinícius Coinete Silva
 Foi feito o módulo Livro, seguindo o passo a passo e explicações abaixo:
 
 ## 1. Criar o projeto NestJS
