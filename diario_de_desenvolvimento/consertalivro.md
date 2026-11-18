@@ -66,7 +66,7 @@ O escopo exige:
 
 ---
 
-## ⚠️ Ajustes de import (causa de erros de compilação)
+## Ajustes de import (causa de erros de compilação)
 
 ### 5. Imports de `./livro.entity` → `./livro`
 
@@ -91,27 +91,3 @@ O escopo exige:
 - ✅ Compilação corrigida (imports da entidade e `import type`).
 
 ---
-
-## Próximos passos (backlog)
-
-- [ ] Aplicar o mesmo padrão Repository + DIP nos demais módulos (ex.: Empréstimo, Usuário).
-- [ ] Adicionar testes unitários do `LivroService` com um **mock** de `LivroRepository` — possível justamente por causa da abstração.
-- [ ] Documentar o padrão no `README.md` do projeto.
-
----
-
-## Comandos úteis
-
-```bash
-# rebuild da imagem após a refatoração
-docker compose build api
-docker compose up -d
-
-# logs para validar injeção de dependência
-docker compose logs -f api
-
-# smoke test
-curl -X POST http://localhost:3000/livros \
-  -H "Content-Type: application/json" \
-  -d '{"titulo":"Refatoração Repository","autor":"Eu","isbn":"1000"}'
-```
