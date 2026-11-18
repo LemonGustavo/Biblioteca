@@ -1,22 +1,22 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { LivroModule } from "./livro/livro.module";
-import { Livro } from "./livro/livro";
+import { EmprestimoModule } from "./emprestimo/emprestimo.module";
 
 @Module ({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: process.env.DATABASE_HOST || 'localhost',
       port: 5432,
-      username: 'postgres',
-      password: 'sua_senha',
-      database: 'biblioteca',
-      entities: [Livro],
+      username: process.env.DATABASE_USER || 'postgres',
+      password: process.env.DATABASE_PASSWORD || 'Me0wscarada!',
+      database: process.env.DATABASE_NAME || 'biblioteca',
       autoLoadEntities: true,
       synchronize: true,
     }),
-    LivroModule
+    LivroModule,
+    EmprestimoModule,
   ],
 })
 

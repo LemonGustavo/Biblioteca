@@ -1,22 +1,25 @@
-import { Inject, Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { Livro } from "./livro";
-import { CriarLivroDto } from "./dto/criar-livro.dto";
+import { Inject, Injectable } from '@nestjs/common';
+import { Livro } from './livro.entity';
+import { CriarLivroDto } from './dto/criar-livro.dto';
+import { LIVRO_REPOSITORY } from './repository/livro.repository';
+import type { LivroRepository } from './repository/livro.repository';
 
 @Injectable()
 export class LivroService {
-    constructor(
-        @InjectRepository(Livro)
-        private readonly livroRespository: Repository<Livro>,
-    ) {}
+  constructor(
+    @Inject(LIVRO_REPOSITORY)
+    private readonly livroRepository: LivroRepository,
+  ) {}
 
-    async criar(dto: CriarLivroDto): Promise<Livro> {
-        const livro = this.livroRespository.create(dto);
-        return this.livroRespository.save(livro);
-    }
+  criar(dto: CriarLivroDto): Promise<Livro> {
+    const livro = new Livro();
+    livro.titulo = dto.titulo;
+    livro.autor = dto.autor;
+    livro.isbn = dto.isbn;
+    return this.livroRepository.criar(livro);
+  }
 
-    async listar(): Promise<Livro[]> {
-        return this.livroRespository.find();
-    }
+  listar(): Promise<Livro[]> {
+    return this.livroRepository.listar();
+  }
 }

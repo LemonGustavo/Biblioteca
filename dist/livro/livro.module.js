@@ -9,17 +9,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LivroModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const livro_1 = require("./livro");
+const livro_entity_1 = require("./livro.entity");
 const livro_service_1 = require("./livro.service");
 const livro_controller_1 = require("./livro.controller");
+const livro_repository_1 = require("./repository/livro.repository");
+const livro_repository_typeorm_1 = require("./repository/livro.repository.typeorm");
 let LivroModule = class LivroModule {
 };
 exports.LivroModule = LivroModule;
 exports.LivroModule = LivroModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([livro_1.Livro])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([livro_entity_1.Livro])],
         controllers: [livro_controller_1.LivroController],
-        providers: [livro_service_1.LivroService],
+        providers: [
+            livro_service_1.LivroService,
+            { provide: livro_repository_1.LIVRO_REPOSITORY, useClass: livro_repository_typeorm_1.LivroRepositoryTypeOrm },
+        ],
     })
 ], LivroModule);
 //# sourceMappingURL=livro.module.js.map

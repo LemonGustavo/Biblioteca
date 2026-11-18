@@ -10,7 +10,7 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const livro_module_1 = require("./livro/livro.module");
-const livro_1 = require("./livro/livro");
+const emprestimo_module_1 = require("./emprestimo/emprestimo.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -19,16 +19,16 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
-                host: 'localhost',
+                host: process.env.DATABASE_HOST || 'localhost',
                 port: 5432,
-                username: 'postgres',
-                password: 'Me0wscarada!',
-                database: 'biblioteca',
-                entities: [livro_1.Livro],
+                username: process.env.DATABASE_USER || 'postgres',
+                password: process.env.DATABASE_PASSWORD || 'Me0wscarada!',
+                database: process.env.DATABASE_NAME || 'biblioteca',
                 autoLoadEntities: true,
                 synchronize: true,
             }),
-            livro_module_1.LivroModule
+            livro_module_1.LivroModule,
+            emprestimo_module_1.EmprestimoModule,
         ],
     })
 ], AppModule);

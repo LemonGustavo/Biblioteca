@@ -14,26 +14,28 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LivroService = void 0;
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("@nestjs/typeorm");
-const typeorm_2 = require("typeorm");
-const livro_1 = require("./livro");
+const livro_entity_1 = require("./livro.entity");
+const livro_repository_1 = require("./repository/livro.repository");
 let LivroService = class LivroService {
-    livroRespository;
-    constructor(livroRespository) {
-        this.livroRespository = livroRespository;
+    livroRepository;
+    constructor(livroRepository) {
+        this.livroRepository = livroRepository;
     }
-    async criar(dto) {
-        const livro = this.livroRespository.create(dto);
-        return this.livroRespository.save(livro);
+    criar(dto) {
+        const livro = new livro_entity_1.Livro();
+        livro.titulo = dto.titulo;
+        livro.autor = dto.autor;
+        livro.isbn = dto.isbn;
+        return this.livroRepository.criar(livro);
     }
-    async listar() {
-        return this.livroRespository.find();
+    listar() {
+        return this.livroRepository.listar();
     }
 };
 exports.LivroService = LivroService;
 exports.LivroService = LivroService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(livro_1.Livro)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __param(0, (0, common_1.Inject)(livro_repository_1.LIVRO_REPOSITORY)),
+    __metadata("design:paramtypes", [Object])
 ], LivroService);
 //# sourceMappingURL=livro.service.js.map

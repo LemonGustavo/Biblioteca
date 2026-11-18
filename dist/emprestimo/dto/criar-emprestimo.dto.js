@@ -9,37 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Livro = void 0;
-const typeorm_1 = require("typeorm");
-let Livro = class Livro {
-    id;
-    titulo;
-    autor;
-    isbn;
-    disponivel;
-};
-exports.Livro = Livro;
+exports.CriarEmprestimoDto = void 0;
+const class_validator_1 = require("class-validator");
+class CriarEmprestimoDto {
+    livro_id;
+    leitor;
+}
+exports.CriarEmprestimoDto = CriarEmprestimoDto;
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, class_validator_1.IsInt)(),
     __metadata("design:type", Number)
-], Livro.prototype, "id", void 0);
+], CriarEmprestimoDto.prototype, "livro_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], Livro.prototype, "titulo", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Livro.prototype, "autor", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Livro.prototype, "isbn", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ default: true }),
-    __metadata("design:type", Boolean)
-], Livro.prototype, "disponivel", void 0);
-exports.Livro = Livro = __decorate([
-    (0, typeorm_1.Entity)('livros')
-], Livro);
-//# sourceMappingURL=livro.js.map
+], CriarEmprestimoDto.prototype, "leitor", void 0);
+//# sourceMappingURL=criar-emprestimo.dto.js.map
