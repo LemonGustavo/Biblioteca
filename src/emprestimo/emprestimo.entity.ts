@@ -21,7 +21,7 @@ export class Emprestimo {
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
     data_emprestimo: Date;
 
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+    @Column({ type: 'timestamp', nullable: true })
     data_devolucao: Date | null;
 
     @Column({
