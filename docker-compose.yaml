@@ -6,12 +6,11 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    env_file:
+      - .env
     environment:
-      - DATABASE_HOST=db  # Nome do serviço do banco, não localhost
+      - DATABASE_HOST=db
       - DATABASE_PORT=5432
-      - DATABASE_USER=postgres
-      - DATABASE_PASSWORD=Me0wscarada!
-      - DATABASE_NAME=biblioteca
     depends_on:
       - db
 
@@ -20,9 +19,9 @@ services:
     ports:
       - "5433:5432"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=Me0wscarada!
-      - POSTGRES_DB=biblioteca
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
